@@ -6,7 +6,7 @@ from docplex.mp.model import *
 
 model = Model(name='cs170')
 
-file = open('20.in', 'r').read().split()
+file = open('50.in', 'r').read().split()
 
 size = int(file[0])
 
@@ -16,7 +16,7 @@ stress = {}
 happiness = {}
 
 #fix k
-k = 9
+k = 15
 
 for i in range(2, len(file)):
     if i % 4 == 2:
@@ -37,7 +37,6 @@ happiness_rooms = {room: model.continuous_var(name = 'happiness_{0}'.format(room
 
 
 # happiness and stress
-
 for i in range(k):
     for (j,m) in happiness:
         model.add_constraint(y[(i,j,m)] <= x[(i,j)])
@@ -60,6 +59,7 @@ for j in range(size):
 model.maximize(model.sum(happiness_rooms[i] for i in range(k)))
 
 model.print_information()
-solution = model.solve()
+model.set_time_limit(300)
+solution = model.solve(log_output=True)
 assert solution
 solution.display()
