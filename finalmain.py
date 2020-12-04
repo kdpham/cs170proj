@@ -3,7 +3,8 @@ import sys
 import docplex.cp
 from docplex.cp.model import *
 from docplex.mp.model import *
-from multiprocessing import Pool
+from multiprocessing import Process
+import time
 
 def idkman(filename):
     #filename = 'medium-65.in'
@@ -64,9 +65,9 @@ def idkman(filename):
             if (solution.get_objective_value() > maxScore):
                 maxScore = solution.get_objective_value()
                 bestSolution = solution
-            print("solution found")
+            print(filename + ", room size " + str(k) + ", solution found")
         except:
-            print("no solution")
+            print(filename + ", room size " + str(k) + ", no solution")
 
     print(filename + " " + str(maxScore))
     print(" ")
@@ -74,6 +75,10 @@ def idkman(filename):
 
 directory = 'inputs/medium'
 for filename in os.listdir(directory):
-    p = Process(target=idkman, args=(filename,))
-    p.start()
-    p.join()
+    #p = Process(target=idkman, args=(filename,))
+    #p.start()
+    #p.join()
+    start = time.time()
+    idkman(filename)
+    end = time.time()
+    print(start-end)
