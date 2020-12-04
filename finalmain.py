@@ -10,7 +10,7 @@ import os
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    file = open(os.getcwd() + '/' + filename, 'r').read().split()
+    file = open(os.getcwd() + '/inputs/medium/khoa/' + filename, 'r').read().split()
     size = int(file[0])
 
     stress_max = float(file[1])
@@ -78,7 +78,7 @@ def idkman(filename):
     print(" ")
 
     output_filename = (filename.split("."))[0] + ".out"
-    new_file = open(output_filename, "a")   # output is student space room
+    new_file = open(os.getcwd() + '/' + 'outputs' + '/medium/khoa' + output_filename, "a")   # output is student space room
 
     for student in range(size):
         for room in range(bestK):
@@ -96,10 +96,12 @@ def idkman(filename):
 
 
 def main():
-    directory = 'inputs/medium' # directory = 'inputs/small' for small inputs, large etc.
+    directory = 'inputs/medium/khoa' # directory = 'inputs/small' for small inputs, large etc.
 
     for filename in os.listdir(directory):
         start = time.time()
         idkman(filename)
         end = time.time()
         print(start-end)
+
+main()
