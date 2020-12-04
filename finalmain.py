@@ -12,6 +12,7 @@ FILE_SIZE = "small"
 def idkman(filename):
     #filename = 'medium-65.in'
     file = open("inputs/" + FILE_SIZE + '/' + filename, 'r').read().split()
+
     size = int(file[0])
 
     stress_max = float(file[1])
@@ -78,8 +79,9 @@ def idkman(filename):
     print(filename + " " + str(maxScore))
     print(" ")
 
-    output_filename = "outputs/" + FILE_SIZE + "/" + (filename.split("."))[0] + ".out"
-    new_file = open(output_filename, "a")   # output is student space room
+
+    output_filename = (filename.split("."))[0] + ".out"
+    new_file = open(os.getcwd() + '/' + 'outputs' + '/medium/khoa' + output_filename, "a")   # output is student space room
 
     for student in range(size):
         for room in range(bestK):
