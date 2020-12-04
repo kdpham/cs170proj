@@ -13,6 +13,7 @@ def idkman(filename):
     #filename = 'medium-65.in'
     #file = open("inputs/" + FILE_SIZE + '/' + filename, 'r').read().split()
     file = open(os.getcwd() + '/inputs/medium/redo' + filename).read().split()
+
     size = int(file[0])
 
     stress_max = float(file[1])
