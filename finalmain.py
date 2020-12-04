@@ -5,10 +5,12 @@ from docplex.cp.model import *
 from docplex.mp.model import *
 from multiprocessing import Process
 import time
+import os
+
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    file = open(directory + '/' + filename, 'r').read().split()
+    file = open(os.getcwd() + '/' + filename, 'r').read().split()
     size = int(file[0])
 
     stress_max = float(file[1])
@@ -26,6 +28,8 @@ def idkman(filename):
 
     maxScore = 0
     bestSolution = None
+    bestK = 0
+
 
     for k in range(1,size+1):
         model = Model(name='cs170')
@@ -65,6 +69,7 @@ def idkman(filename):
             if (solution.get_objective_value() > maxScore):
                 maxScore = solution.get_objective_value()
                 bestSolution = solution
+                bestK = k
             print(filename + ", room size " + str(k) + ", solution found")
         except:
             print(filename + ", room size " + str(k) + ", no solution")
@@ -72,13 +77,29 @@ def idkman(filename):
     print(filename + " " + str(maxScore))
     print(" ")
 
+    output_filename = (filename.split("."))[0] + ".out"
+    new_file = open(output_filename, "a")   # output is student space room
 
-directory = 'inputs/medium'
-for filename in os.listdir(directory):
-    #p = Process(target=idkman, args=(filename,))
-    #p.start()
-    #p.join()
-    start = time.time()
-    idkman(filename)
-    end = time.time()
-    print(start-end)
+    for student in range(size):
+        for room in range(bestK):
+            variable_name = 'x_' + str(room) + '_' + str(student)
+            if bestSolution.get_value(variable_name) == 1:
+                string = str(student) + ' ' + str(room) + '\n'
+                new_file.write(string)
+
+
+    new_file.close()
+
+
+
+
+
+
+def main():
+    directory = 'inputs/medium' # directory = 'inputs/small' for small inputs, large etc.
+
+    for filename in os.listdir(directory):
+        start = time.time()
+        idkman(filename)
+        end = time.time()
+        print(start-end)
