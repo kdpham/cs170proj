@@ -3,11 +3,10 @@ import sys
 import docplex.cp
 from docplex.cp.model import *
 from docplex.mp.model import *
+from multiprocessing import Pool
 
-
-directory = 'inputs/medium'
-for filename in os.listdir(directory):
-    filename = 'medium-65.in'
+def idkman(filename):
+    #filename = 'medium-65.in'
     file = open(directory + '/' + filename, 'r').read().split()
     size = int(file[0])
 
@@ -71,3 +70,10 @@ for filename in os.listdir(directory):
 
     print(filename + " " + str(maxScore))
     print(" ")
+
+
+directory = 'inputs/medium'
+for filename in os.listdir(directory):
+    p = Process(target=idkman, args=(filename,))
+    p.start()
+    p.join()
