@@ -12,7 +12,7 @@ FILE_SIZE = "small"
 def idkman(filename):
     #filename = 'medium-65.in'
     #file = open("inputs/" + FILE_SIZE + '/' + filename, 'r').read().split()
-    file = open(os.getcwd() + '/inputs/medium/redo' + filename).read().split()
+    file = open(os.getcwd() + '/inputs/medium/redo/' + filename).read().split()
 
     size = int(file[0])
 
@@ -66,7 +66,7 @@ def idkman(filename):
             model.add_constraint(model.sum(x[(i, j)] for i in range(k)) == 1)
 
         model.maximize(model.sum(happiness_rooms[i] for i in range(k)))
-        model.set_time_limit(60)
+        model.set_time_limit(180)
         solution = model.solve()
         try:
             if (solution.get_objective_value() > maxScore):
@@ -104,8 +104,7 @@ def main():
     
     for filename in os.listdir("inputs/medium/redo"):
         start = time.time()
-        idkman(filename)
-        if filename.endswith(".in"):
+        if filename.endswith(".in") and not (((filename.split('.')[0]) + '.out') in os.listdir("outputs/medium/redo")):
             idkman(filename)
         end = time.time()
         print(start-end)
