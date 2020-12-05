@@ -11,8 +11,7 @@ FILE_SIZE = "small"
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    #file = open("inputs/" + FILE_SIZE + '/' + filename, 'r').read().split()
-    file = open(os.getcwd() + '/inputs/medium/redo/' + filename).read().split()
+    file = open("inputs/" + "large2" + '/' + filename, 'r').read().split()  ## Change this line
 
     size = int(file[0])
 
@@ -80,9 +79,8 @@ def idkman(filename):
     print(filename + " " + str(maxScore))
     print(" ")
 
-    output_filename = "outputs/medium/redo" + "/" + (filename.split("."))[0] + ".out"
-    
-    new_file = open(output_filename, "a")   # output is student space room
+    output_filename = (filename.split("."))[0] + ".out"
+    new_file = open(os.getcwd() + '/' + 'outputs' + '/large/' + output_filename, "a")   # output is student space room
 
     for student in range(size):
         for room in range(bestK):
@@ -102,7 +100,7 @@ def idkman(filename):
 def main():
      # directory = 'inputs/small' for small inputs, large etc.
     
-    for filename in os.listdir("inputs/medium/redo"):
+    for filename in os.listdir(os.getcwd() + "/inputs/large2"): ## Change this line as well
         start = time.time()
         if filename.endswith(".in") and not (((filename.split('.')[0]) + '.out') in os.listdir("outputs/medium/redo")):
             idkman(filename)
