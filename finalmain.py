@@ -66,7 +66,7 @@ def idkman(filename):
             model.add_constraint(model.sum(x[(i, j)] for i in range(k)) == 1)
 
         model.maximize(model.sum(happiness_rooms[i] for i in range(k)))
-        model.set_time_limit(60)
+        model.set_time_limit(180)
         solution = model.solve()
         try:
             if (solution.get_objective_value() > maxScore):
@@ -79,7 +79,6 @@ def idkman(filename):
 
     print(filename + " " + str(maxScore))
     print(" ")
-
 
     output_filename = (filename.split("."))[0] + ".out"
     new_file = open(os.getcwd() + '/' + 'outputs' + '/large/' + output_filename, "a")   # output is student space room
