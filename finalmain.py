@@ -81,7 +81,7 @@ def idkman(filename):
 
 
     output_filename = (filename.split("."))[0] + ".out"
-    new_file = open(os.getcwd() + '/' + 'outputs' + '/large1' + output_filename, "a")   # output is student space room
+    new_file = open(os.getcwd() + '/' + 'outputs' + '/large/' + output_filename, "a")   # output is student space room
 
     for student in range(size):
         for room in range(bestK):
