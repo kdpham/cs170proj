@@ -11,8 +11,7 @@ FILE_SIZE = "small"
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    file = open("inputs/" + "large6" + '/' + filename, 'r').read().split()  ## Change this line
-    file = open(os.getcwd() + '/inputs/large3/' + filename).read().split()
+    file = open("inputs/" + "largeRedos/vm1/" + filename, 'r').read().split()  ## Change this line
 
     size = int(file[0])
 
@@ -66,7 +65,7 @@ def idkman(filename):
             model.add_constraint(model.sum(x[(i, j)] for i in range(k)) == 1)
 
         model.maximize(model.sum(happiness_rooms[i] for i in range(k)))
-        model.set_time_limit(180)
+        model.set_time_limit(120)
         solution = model.solve()
         try:
             if (solution.get_objective_value() > maxScore):
@@ -81,7 +80,7 @@ def idkman(filename):
     print(" ")
 
     output_filename = (filename.split("."))[0] + ".out"
-    new_file = open(os.getcwd() + '/' + 'outputs' + '/large/' + output_filename, "a")   # output is student space room
+    new_file = open(os.getcwd() + '/' + 'outputs' + '/largeRedos/' + output_filename, "a")   # output is student space room
 
     for student in range(size):
         for room in range(bestK):
@@ -100,7 +99,7 @@ def idkman(filename):
 
 def main():
      # directory = 'inputs/small' for small inputs, large etc.
-    for filename in os.listdir(os.getcwd() + "/inputs/large3"): ## Change this line as well
+    for filename in os.listdir(os.getcwd() + "/inputs/largeRedos/vm1"): ## Change this line as well
         start = time.time()
         if filename.endswith(".in"):
             idkman(filename)
