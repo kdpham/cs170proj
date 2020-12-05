@@ -100,7 +100,7 @@ def idkman(filename):
 
 def main():
      # directory = 'inputs/small' for small inputs, large etc.
-    for filename in os.listdir(os.getcwd() + "/inputs/large2"): ## Change this line as well
+    for filename in os.listdir(os.getcwd() + "/inputs/large1"): ## Change this line as well
         start = time.time()
         #idkman(filename)
         if filename.endswith(".in") and filename != "large-40.in":
