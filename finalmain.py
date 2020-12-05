@@ -11,7 +11,7 @@ FILE_SIZE = "small"
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    file = open("inputs/" + "large2" + '/' + filename, 'r').read().split()  ## Change this line
+    file = open("inputs/" + "large7/tmrw" + '/' + filename, 'r').read().split()  ## Change this line
 
     size = int(file[0])
 
