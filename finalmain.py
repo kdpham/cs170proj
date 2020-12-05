@@ -11,7 +11,7 @@ FILE_SIZE = "small"
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    file = open("inputs/" + FILE_SIZE + '/' + filename, 'r').read().split()
+    file = open("inputs/" + "large1" + '/' + filename, 'r').read().split()
 
     size = int(file[0])
 
@@ -65,7 +65,7 @@ def idkman(filename):
             model.add_constraint(model.sum(x[(i, j)] for i in range(k)) == 1)
 
         model.maximize(model.sum(happiness_rooms[i] for i in range(k)))
-        model.set_time_limit(20)
+        model.set_time_limit(30)
         solution = model.solve()
         try:
             if (solution.get_objective_value() > maxScore):
@@ -81,7 +81,7 @@ def idkman(filename):
 
 
     output_filename = (filename.split("."))[0] + ".out"
-    new_file = open(os.getcwd() + '/' + 'outputs' + '/medium/khoa' + output_filename, "a")   # output is student space room
+    new_file = open(os.getcwd() + '/' + 'outputs' + '/large1/' + output_filename, "a")   # output is student space room
 
     for student in range(size):
         for room in range(bestK):
@@ -100,10 +100,10 @@ def idkman(filename):
 
 def main():
      # directory = 'inputs/small' for small inputs, large etc.
-    for filename in os.listdir("inputs/" + FILE_SIZE):
+    for filename in os.listdir(os.getcwd() + "/inputs/large1"):
         start = time.time()
         #idkman(filename)
-        if filename.endswith(".in"):
+        if filename.endswith(".in") and filename != "large-40.in":
             idkman(filename)
         end = time.time()
         print(start-end)
