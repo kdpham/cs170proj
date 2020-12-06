@@ -15,7 +15,7 @@ def main():
             submission[input_path] = output
     with open(submission_name, 'w') as f:
         f.write(json.dumps(submission))
-    for input_path in os.listdir("inputs/medium"):
+    for input_path in os.listdir("inputs/large"):
         graph_name = input_path.split('.')[0]
         output_file = f'{outputs_dir}/{graph_name}.out'
         if os.path.exists(output_file) and validate_file(output_file):
@@ -23,7 +23,7 @@ def main():
             submission[input_path] = output
     with open(submission_name, 'w') as f:
         f.write(json.dumps(submission))
-    for input_path in os.listdir("inputs/medium/khoa"):
+    for input_path in os.listdir("inputs/medium"):
         graph_name = input_path.split('.')[0]
         output_file = f'{outputs_dir}/{graph_name}.out'
         if os.path.exists(output_file) and validate_file(output_file):
