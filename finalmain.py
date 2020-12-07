@@ -11,8 +11,7 @@ FILE_SIZE = "small"
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    file = open("inputs/" + "largeRedos/vm3/" + filename, 'r').read().split()  ## Change this line
-
+    file = open("inputs/" + "largeRedos/vm2/" + filename, 'r').read().split()  ## Change this line
     size = int(file[0])
 
     stress_max = float(file[1])
