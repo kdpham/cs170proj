@@ -11,8 +11,7 @@ FILE_SIZE = "small"
 
 def idkman(filename):
     #filename = 'medium-65.in'
-    file = open("inputs/" + "largeRedos/vm3/" + filename, 'r').read().split()  ## Change this line
-
+    file = open("inputs/" + "largeRedos/vm2/" + filename, 'r').read().split()  ## Change this line
     size = int(file[0])
 
     stress_max = float(file[1])
@@ -99,7 +98,7 @@ def idkman(filename):
 
 def main():
      # directory = 'inputs/small' for small inputs, large etc.
-    for filename in os.listdir(os.getcwd() + "/inputs/largeRedos/vm3"): ## Change this line as well
+    for filename in os.listdir(os.getcwd() + "/inputs/largeRedos/vm2"): ## Change this line as well
         start = time.time()
         if filename.endswith(".in"):
             idkman(filename)
