@@ -100,7 +100,7 @@ def main():
      # directory = 'inputs/small' for small inputs, large etc.
     for filename in os.listdir(os.getcwd() + "/inputs/largeRedos/vm3"): ## Change this line as well
         start = time.time()
-        if filename == "large-99.in":
+        if filename == 'large-110.in':
             idkman(filename)
         end = time.time()
         print(start-end)
